@@ -14,10 +14,6 @@ if ( !defined('BBP_MESSAGES_FILE') ) {
     define('BBP_MESSAGES_FILE', __FILE__);
 }
 
-if( ! class_exists('bbPress') ) {
-    return;
-}
-
 /**
   * Require version and dependencies check class
   *
