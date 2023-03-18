@@ -149,11 +149,20 @@ class Init
     {
         global $bbpm_bases;
 
-        $pattern = sprintf(
-            '/%s\/([^(\z|\s|\/)]*)\/%s\/send[\/]?$/i',
-            str_replace('/', '\/', bbp_get_user_slug()),
-            $bbpm_bases['messages_base']
-        );
+
+        if (version_compare(PHP_VERSION, '7.3.0') >= 0) {
+            $pattern = sprintf(
+                '/%s\/([^(*|\s|\/)]*)\/%s\/send[\/]?$/i',
+                str_replace('/', '\/', bbp_get_user_slug()),
+                $bbpm_bases['messages_base']
+            );
+        } else {
+            $pattern = sprintf(
+                '/%s\/([^(\z|\s|\/)]*)\/%s\/send[\/]?$/i',
+                str_replace('/', '\/', bbp_get_user_slug()),
+                $bbpm_bases['messages_base']
+            );
+        }
 
         $uri = $_SERVER['REQUEST_URI'];
 
@@ -312,11 +321,19 @@ class Init
     {
         global $bbpm_bases;
 
-        $pattern = sprintf(
-            '/%s\/([^(\z|\s|\/)]*)\/%s\/(^[A-Za-z]|[A-Za-z0-9]+)\/actions[\/]?$/si',
-            str_replace('/', '\/', bbp_get_user_slug()),
-            $bbpm_bases['messages_base']
-        );
+        if (version_compare(PHP_VERSION, '7.3.0') >= 0) {
+            $pattern = sprintf(
+                '/%s\/([^(*|\s|\/)]*)\/%s\/(^[A-Za-z]|[A-Za-z0-9]+)\/actions[\/]?$/si',
+                str_replace('/', '\/', bbp_get_user_slug()),
+                $bbpm_bases['messages_base']
+            );
+        } else {
+            $pattern = sprintf(
+                '/%s\/([^(\z|\s|\/)]*)\/%s\/(^[A-Za-z]|[A-Za-z0-9]+)\/actions[\/]?$/si',
+                str_replace('/', '\/', bbp_get_user_slug()),
+                $bbpm_bases['messages_base']
+            );
+        }
         
         $uri = $_SERVER['REQUEST_URI'];
 
